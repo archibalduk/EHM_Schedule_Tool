@@ -45,7 +45,7 @@ Each club in a schedule template is represented by an id number in the following
 
 Each division of the playable league in question and as listed on the *Schedule Templates* screen of the EHM Editor is assigned an index number. The first division listed is 0 (zero), the second division is 1 (one), etc:
 
-[Division index example](docs/img/division_index_example.png)
+![Division index example](docs/img/division_index_example.png)
 
 Each club within each division is allocated an index number based on the alphabetical order of each club. The first club within a division will have index 0 (zero), the second club will have index 1 (one), etc.
 
@@ -63,7 +63,7 @@ Note that zeros at the beginning of the club id values will be truncated when vi
 Here are some example games within a schedule template:
 
 | Road Club | Home Club | Day of Month | Month | Year Offset |
-| ------------- | ------------- | | ------------- | | ------------- | | ------------- |
+| --- | --- | --- | --- | --- |
 | 0 | 100 | 25 | 9 | 0 |
 | 205 | 1 | 12 | 2 | 1 |
 
@@ -85,3 +85,4 @@ The second row in the example template above is decoded as follows:
 
 # Extra Tools
 
+# Credits
