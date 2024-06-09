@@ -106,7 +106,9 @@ qint32 MainWindow::showHelpAboutApplication()
                 "https://github.com/archibalduk/EHM_DAL/</a><br/><br/>"
                 "<b>XLSX Module</b><br/>"
                 "QXlsx version 1.4.6 by Jay Two<br/><a href=\"https://qtexcel.github.io/QXlsx/\">"
-                "https://qtexcel.github.io/QXlsx/</a><br/><br/>")
+                "https://qtexcel.github.io/QXlsx/</a><br/><br/>"
+                "<b>Icon Credits</b><br/>"
+                "<a href=\"http://www.icons8.com\">Icons8</a><br/>")
             .arg(msc_ver, QT_VERSION_STR, qVersion(), ehm_dal::library_info::libraryVersion())};
 
     QMessageBox about;

@@ -28,6 +28,9 @@ CONFIG += warn_on
 VERSION = 1.0.0
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
+# Resources
+RC_FILE = res/EHM_Schedule_Tool.rc
+
 # External project libraries
 include($$PWD/lib/ehm_dal/ehm_dal.pri)
 include($$PWD/lib/qxlsx/qxlsx.pri)
