@@ -55,7 +55,7 @@ private slots:
     void onGenerateNewScheduleFromMatrix();
 
     // Help
-    void showHelpAboutApplication();
+    qint32 showHelpAboutApplication();
 
     // Import data
     void onImportScheduleTemplate();

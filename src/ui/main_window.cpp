@@ -1,6 +1,7 @@
 #include "main_window.h"
 
 // Application headers
+#include "lib/ehm_dal/include/library_info.h"
 #include "src/ui/generator/schedule_generator_ui.h"
 #include "src/ui/parser/schedule_template_parser_ui.h"
 #include "src/ui/parser/text_schedule_parser_ui.h"
@@ -12,6 +13,7 @@
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QMenuBar>
+#include <QMessageBox>
 #include <QTableView>
 
 using namespace app;
@@ -75,7 +77,46 @@ void MainWindow::onGenerateNewScheduleFromMatrix()
 /*      Help      */
 /* ============== */
 
-void MainWindow::showHelpAboutApplication() {}
+qint32 MainWindow::showHelpAboutApplication()
+{
+    // MSVC++ compiler version
+    auto msc_ver{QString::number(_MSC_VER)};
+    msc_ver.insert(msc_ver.size() - 2, ".");
+
+    const auto application_name{QString(qApp->applicationName() + " " + qApp->applicationVersion())};
+    const auto informative_text{
+        QString("By Archibalduk<br /><br />"
+                "<a href=\"mailto:archibalduk@gmail.com\">archibalduk@gmail.com</a><br/>"
+                "<a "
+                "href=\"https://github.com/archibalduk/EHM_Schedule_Tool\">https://github.com/"
+                "archibalduk/EHM_Schedule_Tool</a><br/>"
+                "<a href=\"https://www.ehmtheblueline.com\">https://www.ehmtheblueline.com</a><br/>"
+                "<table>"
+                "<tr><td colspan=\"2\"><b>Build Environment</b></td></tr>"
+                "<tr><td width=\"150\">Microsoft Visual C++</td><td>%1</td></tr>"
+                "<tr><td>Qt</td><td>%2</td></tr>"
+                "</table><br/>"
+                "<table>"
+                "<tr><td colspan=\"2\"><b>Run Time Environment</b></td></tr>"
+                "<tr><td width=\"150\">Qt</td><td>%3</td></tr>"
+                "</table><br/><br/>"
+                "<b>EHM DAL Module</b><br/>"
+                "EHM Data Abstraction Layer version %4 by archibalduk<br/><a "
+                "href=\"https://github.com/archibalduk/EHM_DAL/\">"
+                "https://github.com/archibalduk/EHM_DAL/</a><br/><br/>"
+                "<b>XLSX Module</b><br/>"
+                "QXlsx version 1.4.6 by Jay Two<br/><a href=\"https://qtexcel.github.io/QXlsx/\">"
+                "https://qtexcel.github.io/QXlsx/</a><br/><br/>")
+            .arg(msc_ver, QT_VERSION_STR, qVersion(), ehm_dal::library_info::libraryVersion())};
+
+    QMessageBox about;
+    about.setWindowTitle(QString("About " + application_name));
+    about.setText(QString("<font size='4'><b>" + application_name + "</b></font>"));
+    about.setInformativeText(informative_text);
+    about.setStandardButtons(QMessageBox::Ok);
+    about.setDefaultButton(QMessageBox::Ok);
+    return about.exec();
+}
 
 /* ===================== */
 /*      Import Data      */
