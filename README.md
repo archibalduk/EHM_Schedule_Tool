@@ -136,11 +136,25 @@ A text schedule is simply a spreadsheet setting out a schedule in text format. H
 
 The Tool can convert a text schedule into an EHM style schedule template. This avoids having to manually convert all of the club names into club ids and the dates into the individual day of month, month and year offset columns.
 
+**Known Bug: The Tool only supports *.xlsx* text schedules at present. There is a bug when reading dates from *.csv* files.
+
 1. From the `File` menu click on `Open text schedule...` to import the chosen text schedule spreadsheet.
 1. You will be prompted to specify the `Header Row Count` of the spreadsheet and together with the positions of the `Date column`, `Road club column` and `Home club column`. Click on `OK` when you have set these accordingly.
 1. You will then be prompted to allocate a club id to each club. E.g. `0000` (or `0`) for the first club of the first division, `0001` (or `1`) for the second club of the first division, etc. Click on `OK` when you have set these accordingly and to generate the schedule template.
 1. You will be returned to the main screen which will now show various (read-only) stats relating to your new schedule.
 1. From the `File` menu click on `Save schedule template as...` to save your schedule template to a spreadsheet. The spreadsheet can then be imported into the EHM Editor.
+
+### Header Row Count
+This setting denotes how many header rows are contained in the text schedule. The Tool will ignore those rows when importing the data. If the text schedule does not have any rows then set this to 0 (zero).
+
+### Date Column, Road Club Column and Home Club Column
+These settings denote the position of date, road club name and home club name columns within the text schedule. The numbering starts from 1 (being the equivalent of Column A in Excel). An example might be as follows:
+
+| Road Club | Score | Home Club | Date |
+| --- | --- | --- | --- |
+| New York | 4 v 2 | Boston | 21/11/2024 |
+
+In the above, the `Date Column` is `4` because it is the fourth column. The `Road Club Column` and `Home Club Column` are 1 and 3 respectively.
 
 ## Generating from an existing template
 This option is very limited at present:
@@ -164,9 +178,10 @@ This changes the reference start date/day and end date/day stats shown on the ma
 # Credits
 Icons by <a target="_blank" href="https://icons8.com">Icons8</a>
 
-EP2EHM uses [EHM DAL by Archibaldu](https://github.com/archibalduk/EHM_DAL). QXlsx is licensed under the GNU General Public License v3.0.
+EHM Schedule Tool uses:
 
-EP2EHM uses [QXlsx by j2doll](https://github.com/QtExcel/QXlsx). QXlsx is licensed under the MIT license.
+- [EHM DAL by Archibaldu](https://github.com/archibalduk/EHM_DAL). EHM DAL is licensed under the GNU General Public License v3.0; and
+- [QXlsx by j2doll](https://github.com/QtExcel/QXlsx). QXlsx is licensed under the MIT license.
 
 # License
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)

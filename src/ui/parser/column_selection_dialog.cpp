@@ -25,7 +25,7 @@ qint32 ColumnSelectionDialog::dateColumnId() const
 
 qint32 ColumnSelectionDialog::headerRowCount() const
 {
-    return header_row_count_spin_box_->value() - COLUMN_ID_MODIFIER;
+    return header_row_count_spin_box_->value();
 }
 
 qint32 ColumnSelectionDialog::homeClubColumnId() const
