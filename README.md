@@ -136,7 +136,7 @@ A text schedule is simply a spreadsheet setting out a schedule in text format. H
 
 The Tool can convert a text schedule into an EHM style schedule template. This avoids having to manually convert all of the club names into club ids and the dates into the individual day of month, month and year offset columns.
 
-**Known Bug: The Tool only supports *.xlsx* text schedules at present. There is a bug when reading dates from *.csv* files.
+**Known Bug: The Tool only supports *.xlsx* text schedules at present. There is a bug when reading dates from *.csv* files.**
 
 1. From the `File` menu click on `Open text schedule...` to import the chosen text schedule spreadsheet.
 1. You will be prompted to specify the `Header Row Count` of the spreadsheet and together with the positions of the `Date column`, `Road club column` and `Home club column`. Click on `OK` when you have set these accordingly.
