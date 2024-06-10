@@ -17,11 +17,11 @@ There are three ways in which schedule templates can be generated using the Tool
 
 1. From scratch by following the Tool's prompts *(Generate -> New schedule template)*;
 
-1. From an existing schedule template *(File -> Open schedule template)*;
+1. From an existing schedule matrix *(Generate -> New schedule template from matrix spreadsheet)*;
 
-1. From an existing schedule matrix *(Generate -> New schedule template from matrix spreadsheet)*; or
+1. From a text schedule *(File -> Open text schedule)*; or
 
-1. From a text schedule *(File -> Open text schedule)*.
+1. From an existing schedule template *(File -> Open schedule template)*.
 
 Step-by-step instructions are set out further below (see the *How to Generate a Schedule Template* section below).
 
@@ -80,9 +80,93 @@ The second row in the example template above is decoded as follows:
 - Date: 12th day of the 2nd month with Year Offset 1 = 12th of February of the year after the season commences (e.g. 12-Feb-2025 for the 2024/25 season).
 
 ## What is a schedule matrix?
+The Tool uses a schedule matrix to determine how many times each club will play the other clubs at home and on the road. You can edit the matrix when generating a schedule in order to customise the number of games played by clubs against the other clubs in the league. A matrix can be edited directly in the Tool as well as in Excel (which can then be re-imported into the Tool).
+
+Each row represents a home club (denoted by an "@") and each column represents a road club. Reading along a row shows how many home games the club shown in that row will play against each other club. Reading down a column shows how many road games the club shown in that column will play against each other club.
+
+Here is an example:
+
+![Schedule matrix example](docs/img/schedule_matrix_example.png)
+
+- The yellow highlighted square shows that club `0001` will play 3 games at at `0002` (i.e. `1 @ 2`).
+- The red highlighted square shows that club `0002` will play 2 games at `0001` (i.e. `2 @ 1`).
+- The blue highlighted square shows that club `0001` will play a total of 12 home games.
+- The green highlighted square shows that club `0001` will play a total of 12 road games.
 
 # How to Generate a Schedule Template
 
+## Generating from scratch
+1. From the `Generate` menu click on `New schedule template...`.
+1. You will be prompted to specify the number of divisions and the number of clubs. Click on `OK` when ready.
+1. Set the `Day Priorities`, `Regular Season Start & End Dates` and `Excluded Date Range` settings and complete the schedule matrix as desired. See details of the settings below.
+1. Click on `OK` to generate the schedule.
+1. You will be returned to the main screen which will now show various (read-only) stats relating to your new schedule.
+1. From the `File` menu click on `Save schedule template as...` to save your schedule template to a spreadsheet. The spreadsheet can then be imported into the EHM Editor.
+
+Note: You can click on the `Export Matrix` button before generating the schedule should you wish to export a copy of your matrix as a a spreadsheet.
+
+### Day Priorities
+This setting determines how the various days of the week are prioritised when generating a schedule. Each day should be given a unique priority value ranging from 1 (highest priority) to 7 (lowest priority).
+
+In the event two days are given the same priority value, the Tool will priorise the earlist day of the week with that priority value. E.g. if Wednesday and Friday were each assigned the same priority value, Wednesday would be prioritised over Thursday. Hence it is better to use unique values for each day.
+
+### Regular Season Start & End Dates
+The start and end date of the regular season schedule should be specified here. The start and end date will be used for the first and last round of games regardless of what priority is assigned to those days in question.
+
+Any year can be used for the purposes of the start and end dates. This may be helpful when generating schedules for retro rosters as it is easier to see on what days of the week the start and end dates fall.
+
+### Excluded Date Range
+This allows a range of dates to be excluded from the schedule; e.g. for Olympic seasons where you might wish to avoid games occuring during the Olympic games.
+
+Check the `Enable` checkbox to enable the exclusion range and then set the start and end dates of the excluded range. The date range is inclusive - i.e. no games will be scheduled on the excluded start date, the excluded end date and any time in between those dates.
+
+## Generating from an existing matrix
+1. From the `Generate` menu click on `New schedule template from matrix spreadsheet..`.
+1. You will be prompted to select the matrix spreadsheet  you wish to use. Click on `Open` when ready.
+1. You will be presented with the various schedule template settings per Step 3 of *Generating from scratch* above.
+
+## Generating from a text schedule
+A text schedule is simply a spreadsheet setting out a schedule in text format. Here is an example:
+
+| Road Club | Home Club | Date |
+| --- | --- | --- |
+| New York | Boston | 21/11/2024 |
+| Seattle | Utah | 28/11/2024 |
+| Winnipeg | Vancouver | 15/02/2025 |
+
+The Tool can convert a text schedule into an EHM style schedule template. This avoids having to manually convert all of the club names into club ids and the dates into the individual day of month, month and year offset columns.
+
+1. From the `File` menu click on `Open text schedule...` to import the chosen text schedule spreadsheet.
+1. You will be prompted to specify the `Header Row Count` of the spreadsheet and together with the positions of the `Date column`, `Road club column` and `Home club column`. Click on `OK` when you have set these accordingly.
+1. You will then be prompted to allocate a club id to each club. E.g. `0000` (or `0`) for the first club of the first division, `0001` (or `1`) for the second club of the first division, etc. Click on `OK` when you have set these accordingly and to generate the schedule template.
+1. You will be returned to the main screen which will now show various (read-only) stats relating to your new schedule.
+1. From the `File` menu click on `Save schedule template as...` to save your schedule template to a spreadsheet. The spreadsheet can then be imported into the EHM Editor.
+
+## Generating from an existing template
+This option is very limited at present:
+
+1. From the `File` menu click on `Open schedule template...` to import the chosen schedule template spreadsheet.
+1. Apply any tools from the `Tools` menu.
+1. From the `File` menu click on `Save schedule template as...` to save your schedule template to a spreadsheet. The spreadsheet can then be imported into the EHM Editor.
+
 # Extra Tools
+A limited number of tools are available from the `Tools` menu. This can be applied to any schedule template generated by the Tool or imported into the Tool at any time.
+
+### Adjust days
+This moves the dates in the schedule forwards or backwards by the specified number of days. A negative number brings the dates forward and a positive number moves the dates backward.
+
+### Set start year
+This changes the reference start date/day and end date/day stats shown on the main screen. It does not adjust any dates in the schedule template.
+
+# Author
+[@archibalduk](https://www.github.com/archibalduk)
 
 # Credits
+Icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+EP2EHM uses [EHM DAL by Archibaldu](https://github.com/archibalduk/EHM_DAL). QXlsx is licensed under the GNU General Public License v3.0.
+
+EP2EHM uses [QXlsx by j2doll](https://github.com/QtExcel/QXlsx). QXlsx is licensed under the MIT license.
+
+# License
+[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
